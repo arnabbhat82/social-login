@@ -1,0 +1,2 @@
+npm install --save @capacitor/core @capacitor/cli
+angularx-social-login

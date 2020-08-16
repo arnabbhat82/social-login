@@ -1,11 +1,3 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
@@ -14,7 +6,45 @@
   </ion-header>
 
   <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+    <div class="jumbotron bg-transparent text-center">
+      <div *ngIf="!user" class="card text-center">
+        <h6 class="card-header">
+          Social Login Demo
+        </h6>
+        <div class="card-block">
+          <h4 class="card-title">Not signed in</h4>
+          <p class="card-text">Sign in with</p>
+        </div>
+        <div>
+          <ion-button (click)="signInWithGoogle()">Sign In With Google</ion-button>
+        </div>
+        <div>
+          <ion-button (click)="signInWithFB()">Sign In With Facebook</ion-button>
+        </div>
+        <div class="card-block">
+          <button class="btn btn-social-icon btn-google mx-1" (click)="signInWithGoogle()"><span
+              class="fa fa-google"></span></button>
+          <button class="btn btn-social-icon btn-facebook mx-1" (click)="signInWithFB()"><span
+              class="fa fa-facebook"></span></button>
+          <button class="btn btn-social-icon btn-amazon mx-1" (click)="signInWithAmazon()"><span
+              class="fa fa-amazon"></span></button>
+        </div>
+      </div>
+      <div *ngIf="user" class="card text-center">
+        <h6 class="card-header">
+          Social Login Demo
+        </h6>
+        <div class="card-block"></div>
+        <img *ngIf="user.photoUrl" class="card-img-top img-responsive photo" src="{{ user.photoUrl }}">
+        <div class="card-block">
+          <h4 class="card-title">{{ user.name }}</h4>
+          <p class="card-text">{{ user.email }}</p>
+          <p class="card-text">Logged in with {{ user.provider }}</p>
+        </div>
+        <div class="card-block">
+          <button class="btn btn-danger" (click)="signOut()">Sign out</button>
+        </div>
+      </div>
+    </div>
   </div>
 </ion-content>
